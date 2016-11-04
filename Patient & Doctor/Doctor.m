@@ -24,6 +24,7 @@
         _doctorName = name;
         _specialization = spec;
         _acceptedPatients = [[NSMutableSet alloc]init];
+        _treatmentLog = [[NSMutableSet alloc]init];
         _medications = @{@"cough":@"coughmedicine", @"B":@"2", @"C":@"3", @"D":@"4", @"E":@"5", @"F":@"6"};
         
     }
@@ -39,7 +40,7 @@
 
 -(void) patientRequest: (Patient*) patient{
     //check if patient has been accepted
-    if ([self.acceptedPatients containsObject:patient.name]){
+    if ([self.acceptedPatients containsObject:patient]){
         
         NSString *treatment = [self.medications objectForKey:patient.symptoms];
         NSLog(@"%@ is cure by %@", patient.symptoms, treatment);
